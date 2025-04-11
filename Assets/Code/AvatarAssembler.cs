@@ -17,24 +17,28 @@ public class AvatarConfig : ScriptableObject
 }
 public class AvatarAssembler : MonoBehaviour
 {
-    public Transform partParent;
+    //public Transform partParent;
+
+    public Transform hairParent, topParent, bottomParent, accessoryParent;
     private GameObject currentHair, currentTop, currentBottom, currentAccessory;
 
     public void ApplyConfig(AvatarConfig config)
     {
         ClearParts();
-
-        if (config.hair) currentHair = Instantiate(config.hair.prefab, partParent);
-        if (config.top) currentTop = Instantiate(config.top.prefab, partParent);
-        if (config.bottom) currentBottom = Instantiate(config.bottom.prefab, partParent);
-        if (config.accessory) currentAccessory = Instantiate(config.accessory.prefab, partParent);
+        
+        if (config.hair) currentHair = Instantiate(config.hair.prefab, hairParent);
+        //if (config.hair) currentHair = Instantiate(config.hair.prefab, partParent);
+        if (config.top) currentTop = Instantiate(config.top.prefab, topParent);
+        if (config.bottom) currentBottom = Instantiate(config.bottom.prefab, bottomParent);
+        if (config.accessory) currentAccessory = Instantiate(config.accessory.prefab, accessoryParent);
     }
 
     void ClearParts()
     {
-        foreach (Transform child in partParent)
-        {
-            Destroy(child.gameObject);
-        }
+        Transform[] parents =  { hairParent, topParent, bottomParent, accessoryParent};
+        foreach (Transform parent in parents )
+            foreach (Transform child in parent )
+                if (child.name.Contains("mixamorig") == false)
+                    Destroy(child.gameObject);
     }
 }
