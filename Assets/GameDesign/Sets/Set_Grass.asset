@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Set_Grass
+  m_EditorClassIdentifier: Assembly-CSharp::AvatarConfig
+  Hair: {fileID: 5897781185349992694, guid: 1c3f8eaa719ceb544b9fc4b951d40462, type: 3}
+  Top: {fileID: 919132149155446097, guid: bd8cc623010d14349ae16b3071a00152, type: 3}
+  Bottom: {fileID: 919132149155446097, guid: 201a45d69ed42044780f23ae4b59f114, type: 3}
+  Accessory: {fileID: 6397540430459647743, guid: 9f5d2daade4a0404c83ecc14094328f5, type: 3}
+  Material1: {fileID: 2100000, guid: 4ead02a28b84c1845a0c20c465054c95, type: 2}
+  Material2: {fileID: 2100000, guid: 944e3d220afcffb4bb7afc9c965d3fc8, type: 2}

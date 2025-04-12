@@ -75,3 +75,5 @@ crashlytics-build.properties
 
 .idea
 UIElementsSchema
+Ignore
+Ignore.meta

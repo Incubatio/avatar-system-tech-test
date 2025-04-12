@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class MainMono : MonoBehaviour
 {
-    public GameObject mainActor; 
-    public AvatarConfig[] avatarSets;
+    [FormerlySerializedAs("mainActor")] public GameObject MainActor; 
+    [FormerlySerializedAs("avatarSets")] public AvatarConfig[] AvatarSets;
     
     
     private List<GameObject> _Actors;
@@ -17,8 +18,10 @@ public class MainMono : MonoBehaviour
         var currentScene = SceneManager.GetActiveScene();
         var gameObjects = currentScene.GetRootGameObjects();
         
-        //var avatar = gameObjects.First(go => go.name == "X Bot").GetComponent<AvatarAssembler>();
-        //avatar.ApplyConfig(avatarSets[0]);
+        var avatar = gameObjects.First(go => go.name == "base_remy").GetComponent<AvatarAssembler>();
+        AvatarHelper.ApplyConfig(avatar, AvatarSets[0]);
+        
+        /*
         var actorParent= gameObjects.First(go => go.name == "Actors");
         var spawnParent= gameObjects.First(go => go.name == "Spawns").transform;
 
@@ -33,6 +36,7 @@ public class MainMono : MonoBehaviour
             _Actors.Add(obj);
         }
         //avatar.ApplyConfig(avatarSets[0]);
+        */
 
     }
 
