@@ -15,6 +15,6 @@ MonoBehaviour:
   Hair: {fileID: 2841160258047154130, guid: 6744fe788f77f1a40839024b5ade3b73, type: 3}
   Top: {fileID: 919132149155446097, guid: bd8cc623010d14349ae16b3071a00152, type: 3}
   Bottom: {fileID: 919132149155446097, guid: 201a45d69ed42044780f23ae4b59f114, type: 3}
-  Accessory: {fileID: 0}
-  Material1: {fileID: 2100000, guid: b363dbb9de8691640960513d7bdbc813, type: 2}
+  Accessory: {fileID: 6464866926259963610, guid: d8cc657c0e6962e48b73b99c3da68592, type: 3}
+  Material1: {fileID: 2100000, guid: 19292b236e5a77c4783f95080f383f37, type: 2}
   Material2: {fileID: 2100000, guid: 26dd2d561d827b348b937448fd660a42, type: 2}
