@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fc0c12656284820ad62e87c87630d0a, type: 3}
+  m_Script: {fileID: 11500000, guid: d1060e48ea2f4d8cba5d3cf044844e2b, type: 3}
   m_Name: Set_Smug
   m_EditorClassIdentifier: 
   Hair: {fileID: 2841160258047154130, guid: 6744fe788f77f1a40839024b5ade3b73, type: 3}

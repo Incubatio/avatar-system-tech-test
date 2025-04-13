@@ -5,21 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(fileName = "AvatarSetConfig", menuName = "Avatar/AvatarSet Config")]
-public class AvatarAssembler : ScriptableObject
-{
-    public GameObject Hair;
-    public GameObject Top;
-    public GameObject Bottom;
-    public GameObject Accessory;
-    public Material Material1;
-    public Material Material2;
-}
-
-
 #if UNITY_EDITOR
-[CustomEditor(typeof(AvatarAssembler))]
-public class AvatarConfigEditor : Editor
+[CustomEditor(typeof(AvatarSet))]
+public class AvatarAssembler : Editor
 {
     private const string BASE_PREFAB_PATH = "Assets/Art/Prefabs/Base_Remy.prefab";
     private const string PARENT_GAMEOBJECT_NAME = "AVATAR_ASSEMBLER_CONTAINER";
@@ -102,7 +90,7 @@ public class AvatarConfigEditor : Editor
         {
             _ConfigurationChanged = false;
             Debug.Log("Config Updated, refresh avatar");
-            AvatarAssembler config = target as AvatarAssembler;
+            AvatarSet config = target as AvatarSet;
             var skinMeshComponent = _PreviewInstance.GetComponent<SkinnedBaseComponent>();
             AvatarHelper.ApplyConfig(skinMeshComponent, config);
         }
@@ -119,7 +107,7 @@ public class AvatarConfigEditor : Editor
     void CreatePreviewCharacter()
     {
         DestroyPreviewCharacter();
-        AvatarAssembler config = target as AvatarAssembler;
+        AvatarSet config = target as AvatarSet;
 
         var basePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(BASE_PREFAB_PATH);
         var parent = new GameObject(PARENT_GAMEOBJECT_NAME);

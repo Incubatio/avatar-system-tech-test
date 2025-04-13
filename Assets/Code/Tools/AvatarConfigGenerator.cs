@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 public static class AvatarConfigGenerator
 {
-    [MenuItem("Avatar/Generate Parts Config")]
+    [MenuItem("Avatar/Generate Config")]
     public static void GenerateAvatarPartsConfig()
     {
         var partsConfig = ScriptableObject.CreateInstance<AvatarSystemConfig>();
-        string path = "Assets/Generated/AvatarPartsConfig.asset";
+        string path = "Assets/Generated/AvatarSystemConfig.asset";
 
         var existingConfig = AssetDatabase.LoadAssetAtPath<AvatarSystemConfig>(path);
         if (existingConfig != null)

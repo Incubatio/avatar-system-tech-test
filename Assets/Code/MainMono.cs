@@ -23,14 +23,19 @@ public class MainMono : MonoBehaviour
     private List<GameObject> _Actors;
     private MainUIController _MainUIController;
     
-    
-    
     private Camera _MirrorCamera;
     private RenderTexture _renderTexture;
+    private bool _DisableUpdate = true;
+    
     void Awake()
     {
         Configs.Avatar = AvatarConfig;
-        
+        if (Configs.Avatar == null || Configs.Avatar.Bases == null || Configs.Avatar.Bases.Length < 1)
+        {
+            Debug.LogError("Missing or corrupted avatar config, use following Unity's Menu: \"Avatar\" > \"Generate Config\".\nMake sure \"Avatar Config\" is assigned in MainMono GameObject in the scene");
+            return;
+        }
+
         _Actors = new List<GameObject>();
 
         var currentScene = SceneManager.GetActiveScene();
@@ -48,7 +53,7 @@ public class MainMono : MonoBehaviour
 
 
         T randPart<T>(T[] array) => array[Random.Range(0, array.Length)];
-        var assembler = ScriptableObject.CreateInstance<AvatarAssembler>();
+        var assembler = ScriptableObject.CreateInstance<AvatarSet>();
         
         SpawnNumber = Math.Min(SpawnNumber, spawnParent.childCount);
         var vector3dHalf = new Vector3(.5f, .5f, .5f);
@@ -88,10 +93,10 @@ public class MainMono : MonoBehaviour
         uiController.BindInteractions();
         
         uiController.UpdateButtonLabels();
-    }
-
-    void Start()
-    {
+        
+        
+        
+        // Setup Mirror Camera to render on mirror surface
         _renderTexture = new RenderTexture(MirrorTexResolution, MirrorTexResolution, 24);
         
         _MirrorCamera.targetTexture = _renderTexture;
@@ -99,13 +104,14 @@ public class MainMono : MonoBehaviour
         mirrorMaterial.mainTexture = _renderTexture;
         mirrorMaterial.mainTextureScale = new Vector2(-1, 1);
         mirrorMaterial.mainTextureOffset = new Vector2(1, 0);
-        
+        _DisableUpdate = false;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
+        if (_DisableUpdate)
+            return;
+        
        _MirrorCamera.Render(); 
     }
 }

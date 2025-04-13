@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b26b4b745b784a8ca23b54e4df0893cc, type: 3}
-  m_Name: AvatarPartsConfig
+  m_Name: AvatarSystemConfig
   m_EditorClassIdentifier: 
   Bases:
-  - {fileID: 0}
+  - {fileID: 2533439428584035893, guid: 931e29031e75ae84cb378818039d3ce7, type: 3}
   HairParts:
   - {fileID: 7040144528431853778, guid: b497533e3428b554b9ca30905be8f37c, type: 3}
   - {fileID: 7152001988161951978, guid: 9b7a615d8ba4574409983d675f4ccb73, type: 3}

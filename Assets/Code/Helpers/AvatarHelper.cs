@@ -3,7 +3,7 @@ using UnityEngine;
 public static class AvatarHelper
 {
     
-    public static void ApplyConfig(SkinnedBaseComponent pSkinnedBaseComponent, AvatarAssembler pAvatarSet)
+    public static void ApplyConfig(SkinnedBaseComponent pSkinnedBaseComponent, AvatarSet pAvatarSet)
     {
         Transform[] parents =  { pSkinnedBaseComponent.HairParent, pSkinnedBaseComponent.TopParent, 
             pSkinnedBaseComponent.BottomParent, pSkinnedBaseComponent.AccessoryParent };
