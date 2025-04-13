@@ -15,11 +15,12 @@ public static class AvatarConfigGenerator
         if (existingConfig != null)
             partsConfig = existingConfig;
 
+        partsConfig.Bases = FindAssetsByPrefix<GameObject>("Base_");
         partsConfig.HairParts = FindAssetsByPrefix<GameObject>("Hair_");
         partsConfig.TopParts = FindAssetsByPrefix<GameObject>("Top_");
         partsConfig.BottomParts = FindAssetsByPrefix<GameObject>("Bottom_");
         partsConfig.AccessoryParts = FindAssetsByPrefix<GameObject>("Accessory_");
-        partsConfig.Materials = FindAssetsByPrefix<GameObject>("Material_");
+        partsConfig.Materials = FindAssetsByPrefix<Material>("Material_");
 
         if (existingConfig == null)
             AssetDatabase.CreateAsset(partsConfig, path);

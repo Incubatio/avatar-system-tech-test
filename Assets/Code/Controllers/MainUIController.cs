@@ -7,6 +7,7 @@ public class MainUIController
 {
     private GameObject _LocalPlayer;
     private VisualElement _RootUI;
+    private AvatarAssembler _Avatar;
 
     public MainUIController(GameObject pLocalPlayer, VisualElement pRootUI)
     {
