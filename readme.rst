@@ -159,14 +159,16 @@ although doesn't seem to affect frametime. Maybe it Maybe it would have a higher
 
 
 
-Potential Improvements
-----------------------
+Future Improvements
+--------------------
+
+with More time I would add:
 
 1. **Texture Atlasing**
 
 2. **DOTS**, improved CPU usage for vast amount of object and animations
 
-3. **Mesh Combine**, creating a new SkinnedMeshRenderer to combine the meshes and use the same bones
+3. **Mesh Combine**, use low poly avatar and parts, creating a new SkinnedMeshRenderer to combine the meshes and use the same bones
 
 4. **LOD System**
 
