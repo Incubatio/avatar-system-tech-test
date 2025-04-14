@@ -15,10 +15,10 @@
                 <engine:Button text="Accessory" name="accessory-btn" style="font-size: 22px; -unity-font-style: bold; height: 100px; width: 160px;" />
             </engine:VisualElement>
             <engine:VisualElement name="row5" style="flex-grow: 1; align-items: flex-end; justify-content: center;">
-                <engine:DropdownField choices="Color1" index="0" style="flex-direction: column; font-size: 22px; width: auto;" />
+                <engine:DropdownField choices="Color1" index="0" name="material1-dropdown" style="flex-direction: column; font-size: 22px; width: auto;" />
             </engine:VisualElement>
             <engine:VisualElement name="row6" style="flex-grow: 1; align-items: flex-end; justify-content: center;">
-                <engine:DropdownField choices="Color2" name="DropdownField" index="0" style="flex-direction: column; font-size: 22px; width: auto;" />
+                <engine:DropdownField choices="Color2" name="material2-dropdown" index="0" style="flex-direction: column; font-size: 22px; width: auto;" />
             </engine:VisualElement>
             <engine:VisualElement name="row7" style="flex-grow: 1; height: 15%;" />
         </engine:VisualElement>

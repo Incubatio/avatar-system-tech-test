@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public static class AvatarHelper
 {
@@ -62,5 +64,19 @@ public static class AvatarHelper
             targetIndex = System.Array.FindIndex(pParts, obj => pPreviousPart.name == obj.name);
 
         return pParts[(targetIndex + 1) % pParts.Length];
+    }
+    
+    public static void ChangeMaterial(string pTargetMaterial, Transform pParent) {
+        var material = Array.Find(Configs.Avatar.Materials, m => m.name == pTargetMaterial);
+
+        var bottomPart = SceneDataSourceHelper.GetCurrentPart(pParent);
+        if (bottomPart != null)
+        {
+            var renderer = SkinnedMeshHelper.GetRenderer(bottomPart);
+            if (renderer != null)
+            {
+                renderer.material = material;
+            }
+        }
     }
 }

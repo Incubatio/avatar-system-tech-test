@@ -1,4 +1,6 @@
 using UnityEngine;
+using Object = UnityEngine.Object;
+
 public class SceneDataSourceHelper
 {
     public static void ClearParts(Transform pParent)

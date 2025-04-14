@@ -22,8 +22,13 @@ public class MainUIController
         _RootUI.Q<Button>(UIHelper.TOP_BTN).clicked += OnChangeTop;
         _RootUI.Q<Button>(UIHelper.BOTTOM_BTN).clicked += OnChangeBottom;
 
-        //_RootUI.Q<DropdownField>(UIHelper.MATERIAL1_DROPDOWN).RegisterValueChangedCallback() += ChangeMaterial1;
-        //_RootUI.Q<DropdownField>(UIHelper.MATERIAL2_DROPDOWN).RegisterValueChangedCallback() += ChangeMaterial2;
+        var dropdown = _RootUI.Q<DropdownField>(UIHelper.MATERIAL1_DROPDOWN);
+        UIHelper.InitializeDropdown(dropdown, Configs.Avatar.Materials);
+        dropdown.RegisterValueChangedCallback(OnChangeMaterial1);
+        
+        dropdown = _RootUI.Q<DropdownField>(UIHelper.MATERIAL2_DROPDOWN);
+        UIHelper.InitializeDropdown(dropdown, Configs.Avatar.Materials);
+        dropdown.RegisterValueChangedCallback(OnChangeMaterial2);
     }
 
     public void UnbindInteractions()
@@ -31,6 +36,8 @@ public class MainUIController
         _RootUI.Q<Button>(UIHelper.HAIR_BTN).clicked -= OnChangeHair;
         _RootUI.Q<Button>(UIHelper.ACCESSORY_BTN).clicked -= OnChangeAccessory;
         _RootUI.Q<Button>(UIHelper.TOP_BTN).clicked -= OnChangeTop;
+        _RootUI.Q<DropdownField>(UIHelper.MATERIAL1_DROPDOWN).UnregisterValueChangedCallback(OnChangeMaterial1);
+        _RootUI.Q<DropdownField>(UIHelper.MATERIAL2_DROPDOWN).UnregisterValueChangedCallback(OnChangeMaterial2);
     }
 
     public void UpdateButtonLabels()
@@ -52,7 +59,18 @@ public class MainUIController
             var name = __format(part.name);
             _RootUI.Q<Button>(uiKey).text = $"- {name[0]} - \n({name[1]})";
         }
+    }
 
+    public void InitDropdownValues()
+    {
+        var skinnedBase = _LocalPlayer.GetComponent<SkinnedBaseComponent>();
+        var topPart = SceneDataSourceHelper.GetCurrentPart(skinnedBase.TopParent);
+        var topRenderer = SkinnedMeshHelper.GetRenderer(topPart);
+        _RootUI.Q<DropdownField>(UIHelper.MATERIAL1_DROPDOWN).value = topRenderer.sharedMaterial.name;
+        
+        var bottomPart = SceneDataSourceHelper.GetCurrentPart(skinnedBase.BottomParent);
+        var bottomRenderer = SkinnedMeshHelper.GetRenderer(bottomPart);
+        _RootUI.Q<DropdownField>(UIHelper.MATERIAL2_DROPDOWN).value = bottomRenderer.sharedMaterial.name;
     }
 
     private void _InstanciateNextPart(Transform pParent, GameObject[] pParts)
@@ -100,5 +118,16 @@ public class MainUIController
         var skinnedBase = _LocalPlayer.GetComponent<SkinnedBaseComponent>();
         _InstanciateNextSkinnedPart(skinnedBase.BottomParent, skinnedBase.BoneRoot, Configs.Avatar.BottomParts);
     }
-    
+
+    public void OnChangeMaterial1(ChangeEvent<string> evt)
+    {
+        var skinnedBase = _LocalPlayer.GetComponent<SkinnedBaseComponent>();
+        AvatarHelper.ChangeMaterial(evt.newValue, skinnedBase.TopParent);
+    }
+
+    public void OnChangeMaterial2(ChangeEvent<string> evt)
+    {
+        var skinnedBase = _LocalPlayer.GetComponent<SkinnedBaseComponent>();
+        AvatarHelper.ChangeMaterial(evt.newValue, skinnedBase.BottomParent);
+    }
 }

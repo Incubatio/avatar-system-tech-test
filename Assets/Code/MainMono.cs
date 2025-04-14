@@ -93,6 +93,7 @@ public class MainMono : MonoBehaviour
         uiController.BindInteractions();
         
         uiController.UpdateButtonLabels();
+        uiController.InitDropdownValues();
         
         
         
@@ -112,6 +113,6 @@ public class MainMono : MonoBehaviour
         if (_DisableUpdate)
             return;
         
-       _MirrorCamera.Render(); 
+        _MirrorCamera.Render(); 
     }
 }
