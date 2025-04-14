@@ -254,7 +254,7 @@ MonoBehaviour:
   AvatarConfig: {fileID: 11400000, guid: 8d25a828216e7ef49b968419fa3c2b00, type: 2}
   MirrorTexResolution: 512
   MirrorSurface: {fileID: 168784990}
-  SpawnNumber: 82
+  SpawnNumber: 1
 --- !u!1 &78553172
 GameObject:
   m_ObjectHideFlags: 0
